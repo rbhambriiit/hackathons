@@ -1,0 +1,184 @@
+APPLIFT
+
+
+yes:
+PublisherId
+AppSiteId
+TrafficType
+AppSiteCategory
+Position
+OS
+DeviceType
+Country
+CreativeType
+
+
+maybe:
+Age
+Gender
+BidFloor??????
+OSVersion???
+Carrier???
+
+
+output:
+ExchangeBid
+
+
+Outcome: matters...
+0
+1
+2
+	
+
+	
+'TrafficType','AppSiteCategory','Position','Age','Gender','OS','DeviceType','Country','CreativeType'
+	
+	model = graphlab.logistic_classifier.create(products2,target='Outcome',features=['TrafficType','AppSiteCategory','Position','Age','Gender','OS','DeviceType','Country','CreativeType'],validation_set=test_data)
+	
+	
+	
+	import graphlab
+	products=graphlab.SFrame('ustrain.csv')
+	products1=products[products['Age']!=0]
+	len(products1)
+	products2=products1[products1['Gender']!=0]
+	len(products2)
+	products2.show()
+	train_data,test_data = products2.random_split(.8)
+	model=graphlab.logistic_classifier.create(products2,target='Outcome',features=['TrafficType','AppSiteCategory','Position','Age','Gender','OS','DeviceType','Country','CreativeType'],validation_set=test_data)
+	
+	Op logs:
+	PROGRESS: WARNING: Detected extremely low variance for feature(s) 'Country' because all entries are nearly the same.
+Proceeding with model training using all features. If the model does not provide results of adequate quality, exclude the above mentioned feature(s) from the input dataset.
+PROGRESS: Logistic regression:
+PROGRESS: --------------------------------------------------------
+PROGRESS: Number of examples          : 2577279
+PROGRESS: Number of classes           : 3
+PROGRESS: Number of feature columns   : 9
+PROGRESS: Number of unpacked features : 9
+PROGRESS: Number of coefficients    : 108
+PROGRESS: Starting Newton Method
+PROGRESS: --------------------------------------------------------
+PROGRESS: +-----------+----------+--------------+-------------------+---------------------+
+PROGRESS: | Iteration | Passes   | Elapsed Time | Training-accuracy | Validation-accuracy |
+PROGRESS: +-----------+----------+--------------+-------------------+---------------------+
+PROGRESS: | 1         | 2        | 4.801206     | 0.984853          | 0.984586            |
+PROGRESS: | 2         | 3        | 7.523355     | 0.984853          | 0.984586            |
+PROGRESS: | 3         | 4        | 10.246502    | 0.984853          | 0.984586            |
+PROGRESS: | 4         | 5        | 12.992652    | 0.984853          | 0.984586            |
+PROGRESS: | 5         | 6        | 15.856804    | 0.984853          | 0.984586            |
+PROGRESS: | 6         | 7        | 19.004959    | 0.984853          | 0.984586            |
+PROGRESS: | 7         | 8        | 21.787109    | 0.984853          | 0.984586            |
+PROGRESS: | 8         | 9        | 24.578260    | 0.984853          | 0.984586            |
+PROGRESS: | 9         | 10       | 27.447411    | 0.984853          | 0.984586            |
+PROGRESS: | 10        | 11       | 30.333551    | 0.984853          | 0.984586            |
+PROGRESS: +-----------+----------+--------------+-------------------+---------------------+
+
+Model:
+Class                         : LogisticClassifier
+
+Schema
+------
+Number of coefficients        : 108
+Number of examples            : 2577279
+Number of classes             : 3
+Number of feature columns     : 9
+Number of unpacked features   : 9
+
+Hyperparameters
+---------------
+L1 penalty                    : 0.0
+L2 penalty                    : 0.01
+
+Training Summary
+----------------
+Solver                        : auto
+Solver iterations             : 10
+Solver status                 : TERMINATED: Iteration limit reached.
+Training time (sec)           : 31.2156
+
+Settings
+--------
+Log-likelihood                : 193729.689
+
+Highest Positive Coefficients
+-----------------------------
+OS[0]                         : 17.3944
+OS[0]                         : 13.9204
+OS[Windows]                   : 3.9543
+TrafficType[site]             : 2.6564
+CreativeType                  : 2.345
+
+Lowest Negative Coefficients
+----------------------------
+(intercept)                   : -16.6472
+AppSiteCategory[Arts & Entertainment#Society#Style & Fashion]: -8.4825
+AppSiteCategory[Dating#Society]: -8.2136
+AppSiteCategory[Health & Fitness]: -8.0631
+AppSiteCategory[Education]    : -7.9956
+	
+	In [22]:
+
+model.evaluate(test_data)
+
+Out[22]:
+
+{'accuracy': 0.9845860334946152, 'confusion_matrix': Columns:
+ 	target_label	str
+ 	predicted_label	str
+ 	count	int
+ 
+ Rows: 3
+ 
+ Data:
+ +--------------+-----------------+--------+
+ | target_label | predicted_label | count  |
+ +--------------+-----------------+--------+
+ |      c       |        0        |   16   |
+ |      w       |        0        |  7926  |
+ |      0       |        0        | 507305 |
+ +--------------+-----------------+--------+
+ [3 rows x 3 columns]}
+	
+	
+	Feature engineering:
+	
+
+	
+'TrafficType','AppSiteCategory','Position','Age','Gender','OS','DeviceType','Country','CreativeType'
+	
+model2=graphlab.logistic_classifier.create(products2,target='Outcome',features=['TrafficType','AppSiteCategory','Position','Age','Gender','OS','DeviceType','Country','CreativeType'],validation_set=test_data)
+	
+	
+	
+	
+	usfull11=usfull[usfull['Age']!=0]
+	usfull2=usfull1[usfull1['Gender']!='0']
+	
+	
+	usfull2['predicted'] = model.predict(usfull2)
+	
+	===========================================================
+	model1: 108 vars...  limited dataset 2.5gb, extend data
+	model 1:  optimise models...
+	
+	
+	=====================================================
+	
+	
+	
+	
+	BidId,TrafficType,PublisherId,AppSiteId,AppSiteCategory,Position,BidFloor,Timestamp,Age,Gender,OS,OSVersion,Model,Manufacturer,Carrier,DeviceType,DeviceId,DeviceIP,Country,Latitude,Longitude,Zipcode,GeoType,CampaignId,CreativeId,CreativeType,CreativeCategory,ExchangeBid,OutcomeBidId,TrafficType,PublisherId,AppSiteId,AppSiteCategory,Position,BidFloor,Timestamp,Age,Gender,OS,OSVersion,Model,Manufacturer,Carrier,DeviceType,DeviceId,DeviceIP,Country,Latitude,Longitude,Zipcode,GeoType,CampaignId,CreativeId,CreativeType,CreativeCategory,ExchangeBid,Outcome
+	
+	
+	
+	
+	
+	A popular approach towards solving class imbalance problems is to bias the classifier so that it pays more attention to the positive instances. This can be done, for instance, by increasing the penalty associated with misclassifying the positive class relative to the negative class. Another approach is to preprocess the data by oversampling the majority class or undersampling the minority class in order to create a balanced dataset.
+	
+	
+	
+	
+	
+	

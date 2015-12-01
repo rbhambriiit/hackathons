@@ -1,0 +1,66 @@
+
+
+removed:
+
+BidId	str unique
+	BidFloor	int  same
+	Timestamp	int ignored
+	Age	int not enuf data
+	Gender	str  --do--
+	Carrier	str
+	DeviceId	str all 0
+	Latitude	str
+	Longitude	str
+	Zipcode	int
+	GeoType	str
+
+	
+	
+
+kept:
+	TrafficType	str: site/app
+	PublisherId	str: brand value of publisher
+	AppSiteId	str	: brand value of app/site
+	AppSiteCategory	str: arts,travel: genre
+	Position	str: top/bottom					
+	OS	str
+	OSVersion	str
+	DeviceType	str
+	DeviceIP	str (perhaps!!)
+	Country	str
+	CampaignId	int
+	CreativeId	int
+	CreativeType	int
+	CreativeCategory	str
+	ExchangeBid	float
+	
+	
+	
+	
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','Position','OS','OSVersion','DeviceType','DeviceIP','Country','CampaignId','CreativeId','CreativeType','CreativeCategory','ExchangeBid'],validation_set=test_data,max_iterations=500)
+
+
+model=graphlab.random_forest_classifier.create(train_data,target='Outcome',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','Position','OS','OSVersion','DeviceType','DeviceIP','Country','CampaignId','CreativeId','CreativeType','CreativeCategory','ExchangeBid'],validation_set=test_data,verbose=True)
+
+	
+	
+graphlab.svm_classifier.create(train_data, target='sentiment',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','Position','OS','OSVersion','DeviceType','DeviceIP','Country','CampaignId','CreativeType','CreativeCategory','ExchangeBid'], max_iterations=100, vadation_set=test_data, verbose=True)	
+	
+	
+	
+model=graphlab.logistic_classifier.create(train_data,target='Outcome',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','Position','OS','OSVersion','DeviceType','Country','CampaignId','CreativeId','CreativeType','CreativeCategory','ExchangeBid'],validation_set=test_data)
+
+
+
+???
+	Model	str
+	Manufacturer	str
+
+
+predict:
+	Outcome	str
+
+	
+	
+	
+	

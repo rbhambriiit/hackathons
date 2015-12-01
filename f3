@@ -1,0 +1,187 @@
+f3:
+
+import graphlab
+pr=graphlab.SFrame('ustrain.csv')
+
+
+
+len(pr)
+
+Out[3]:
+
+8000000
+
+
+
+	
+pr1=pr[pr['Age']!=0]
+	
+len(pr1)
+
+Out[5]:
+
+2614886
+	
+pr1=pr1[pr1['Gender']!='0']
+
+len(pr1)
+
+Out[7]:
+
+2577279
+
+
+OS=android
+
+pr1=pr1[pr1['OS']='Android']
+
+pr1=pr1[pr1['OS']=='Android']
+
+​
+
+In [10]:
+
+len(pr1)
+
+Out[10]:
+
+2407198
+
+train_data,test_data = pr1.random_split(.8)
+
+pr1['sentiment']= pr1['Outcome']=='w'
+
+pr1['sentiment']= pr1['Outcome']=='w'
+
+train_data,test_data = pr1.random_split(.8)
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['AppSiteCategory','Position','Age','Gender','DeviceType','CreativeType'],validation_set=test_data)
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','OS'],validation_set=test_data)
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','OS','CreativeType'],validation_set=test_data)
+
+
+ExchangeBid
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','AppSiteCategory'],validation_set=test_data)
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','Position'],validation_set=test_data)
+
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','Position','Gender','Age','DeviceType'],validation_set=test_data)
+
+
+
+pr.save('data/bid_data.csv', format='csv')
+pr.save('data/bid_data_sframe')
+
+
+products=graphlab.SFrame('data/bid_data.csv')
+products.topk('sentiment', k=10, reverse=False)
+
+num=len(products.filter_by([1], 'sentiment'))
+
+pr=products.topk('sentiment', k=2*num, reverse=False)
+pr.save('data/bid_data_balanced.csv', format='csv')
+
+
+
+ SFrame.topk(column_name, k=10, reverse=False)
+
+    Get top k rows according to the given column. Result is according to and sorted by column_name in the given order (default is descending). When k is small, topk is more efficient than sort.
+    Parameters:	
+
+    column_name : string
+
+        The column to sort on
+
+    k : int, optional
+
+        The number of rows to return
+
+    reverse : bool, optional
+
+        If True, return the top k rows in ascending order, otherwise, in descending order.
+
+    Returns:	
+
+    out : SFrame
+
+        an SFrame containing the top k rows sorted by column_name.
+
+		
+		train_data,test_data = pr1.random_split(.8)
+
+		
+		
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['AppSiteCategory','Position','Age','Gender','DeviceType','CreativeType'],validation_set=test_data)
+
+model.evaluate(test_data)
+
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid'],validation_set=test_data)
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType'],validation_set=test_data)
+
+
+ExchangeBid
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','AppSiteCategory'],validation_set=test_data)
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','Position'],validation_set=test_data)
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','Position','Gender','age_binary','DeviceType'],validation_set=test_data)
+
+
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','Position','Gender','Age','DeviceType'],validation_set=test_data)
+
+
+BidId	str
+	TrafficType	str
+	PublisherId	str
+	AppSiteId	str
+	AppSiteCategory	str
+	Position	str
+	BidFloor	str
+	Timestamp	int
+	Age	int
+	Gender	str
+	OS	str
+	OSVersion	str
+	Model	str
+	Manufacturer	str
+	Carrier	str
+	DeviceType	str
+	DeviceId	str
+	DeviceIP	str
+	Country	str
+	Latitude	str
+	Longitude	str
+	Zipcode	int
+	GeoType	str
+	CampaignId	int
+	CreativeId	int
+	CreativeType	int
+	CreativeCategory	str
+	ExchangeBid	float
+	
+	Outcome	str
+	sentiment	int
+	age_binary	int
+
+	
+	
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['ExchangeBid','CreativeType','Position','Gender','DeviceType','age_binary'],validation_set=test_data)
+
+	
+	model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['OS','CreativeType','ExchangeBid'],validation_set=test_data)
+
+	
+	

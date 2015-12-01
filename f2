@@ -1,0 +1,51 @@
+##model2
+
+usfull11=usfull[usfull['Age']!=0]
+	usfull2=usfull1[usfull1['Gender']!='0']
+	
+	p1=products[products['Age']!=0]	
+	p1=p1[p1['Gender']!='0']
+	
+	
+	len(products)
+
+Out[8]:
+
+4000
+
+In [9]:
+
+len(p1)
+
+Out[9]:
+
+810
+
+
+
+
+p1=p1[p1['OS']='Android']
+
+age >0
+gender !='0'
+OS=android
+
+
+features:
+'AppSiteCategory'
+'Position'
+'Age'
+'Gender'
+'DeviceType'
+'CreativeType'
+
+
+model2=graphlab.logistic_classifier.create(products2,target='Outcome',features=['AppSiteCategory','Position','Age','Gender','DeviceType','CreativeType'],validation_set=test_data)
+
+
+
+
+
+## reading full US data:
+products1=products[products['Age']!=0]
+	

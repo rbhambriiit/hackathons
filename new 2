@@ -1,0 +1,51 @@
+	TrafficType	str: site/app
+	PublisherId	str: brand value of publisher
+	AppSiteId	str	: brand value of app/site
+	AppSiteCategory	str: arts,travel: genre
+	DeviceType	str
+	Country	str
+	CampaignId	int
+	CreativeCategory	str
+	ExchangeBid	float
+	
+	
+	
+	model=graphlab.logistic_classifier.create(train_data,target='Outcome',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','DeviceType','Country','CampaignId','CreativeCategory','ExchangeBid'],validation_set=test_data,max_iterations=500)
+
+	
+	
+	
+	model=graphlab.logistic_classifier.create(train_data,target='Outcome',features=['TrafficType','DeviceType','CampaignId','CreativeCategory','ExchangeBid'],validation_set=test_data,max_iterations=500)
+
+	
+	TrafficType,PublisherId,AppSiteId	str
+	AppSiteCategory	str
+	Position	str
+	Timestamp	int
+	OS	str
+	OSVersion	str
+	Model	str
+	Manufacturer	str
+	Carrier	str
+	DeviceType	str
+	DeviceId	str
+	DeviceIP	str
+	Country	str
+	Latitude	str
+	Longitude	str
+	Zipcode	int
+	GeoType	str
+	CampaignId	int
+	CreativeId	int
+	CreativeType	int
+	CreativeCategory	str
+	ExchangeBid	float
+	
+	
+	
+	['']
+	
+	
+	
+	
+	model=graphlab.random_forest_classifier.create(train_data,target='Outcome',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','Position','Timestamp','OS','OSVersion','Model','Manufacturer','Carrier','DeviceType','DeviceId','DeviceIP','Country','Latitude','Longitude','Zipcode','GeoType','CampaignId','CreativeId','CreativeType','CreativeCategory','ExchangeBid'],validation_set=test_data,max_iterations=5000,verbose=True)

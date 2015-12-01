@@ -1,0 +1,71 @@
+###f4:
+
+pr=graphlab.SFrame('1gb.csv')
+
+
+## filter based on gender
+pr=pr[pr['Gender']!='0']
+
+len(pr)
+
+Out[11]:
+
+1048575
+
+In [12]:
+
+len(pr1)
+
+Out[12]:
+
+472767
+
+pr1=pr1[pr1['Age']!=0]
+
+
+pr1['sentiment']= pr1['Outcome']=='w'
+
+
+num=len(pr1.filter_by([1], 'sentiment'))
+
+pr1=pr1.topk('sentiment', k=3*num, reverse=False)
+
+
+pr1.save('data/1gb_filtered.csv', format='csv')
+
+train_data,test_data = pr1.random_split(.8)
+
+
+
+idn=pr1[pr1['Country']=='IDN']
+
+In [39]:
+
+usa=pr1[pr1['Country']=='USA']
+
+In [40]:
+
+len(idn)
+
+Out[40]:
+
+24463
+
+In [41]:
+
+len(usa)
+
+Out[41]:
+
+19143
+
+train_data_usa,test_data_usa = usa.random_split(.8)
+
+
+usa=pr1[pr1['Country']=='USA']
+train_data_android,test_data_android = android.random_split(.8)
+
+
+model=graphlab.logistic_classifier.create(train_data_android,target='sentiment',features=['CreativeType','ExchangeBid'],validation_set=test_data_android)
+
+

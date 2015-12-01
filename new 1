@@ -1,0 +1,19 @@
+
+	
+model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['TrafficType','PublisherId','AppSiteId','AppSiteCategory','DeviceType','Country','CampaignId','CreativeCategory','ExchangeBid'],validation_set=test_data,max_iterations=500)
+
+
+
+	model=graphlab.logistic_classifier.create(train_data,target='sentiment',features=['TrafficType','DeviceType','CampaignId','CreativeCategory','ExchangeBid'],validation_set=test_data,max_iterations=500)
+
+	
+	
+model.evaluate(test_data)
+
+model.predict(eval,)
+
+model.predict_topk('sentiment', k=10, reverse=False)
+
+
+
+eval['predict']=model.predict(eval,output_type='probablitiy')
