@@ -1,0 +1,18 @@
+About the team:
+I am working as an individual contributor for this hackathon as team Oreo since my teammate felt sick. 
+
+About the problem and Current updates:
+The problem I have understood so far looks like a basic classification and regression problem over text data.
+At this stage, I have the training and test data available with me. I am working over converting this data into better structure based on the 
+'\t' and problem-specified delimiters. Once this is done and I can read my data properly, I Would be ready to set go and apply some learning algorithms
+and try evaluation procedure. The idea would be to run a classifier, try to feed in some training data, engineer features such as [title, summary] and set the topic as the target.
+Hopefully, we will get some good accuracy. Similarly, I will be trying to perform a regression task. Stay tuned for more updates as we bring WORDS INTO ACTION.
+
+
+Tools:
+I plan to use tools for data science adn Machine learning: IPython notebook, Graphlab create and program in Python. These tools can be very helpful
+in doing evaluation and visualisation.
+
+Thanks,
+Rahul
+(Team OREO)
